@@ -1,0 +1,53 @@
+body {
+    background-color: #262626;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 50px;
+}
+
+.menu {
+    margin: auto;
+    margin-top: 10%;
+    padding: 3% 7% 5%;
+    width: 30%;
+    background-color: #bdbdbd;
+    border-radius: 5%;
+    color: black;
+}
+
+.btn {
+    width: 75%;
+    margin: 15px;
+    color: black;
+}
+
+.icon {
+    color: orangered;
+}
+
+
+/* menus */
+#start_menu{
+    display: null;
+}
+
+#how_to_play{
+    display: none;
+}
+
+#about_the_game{
+    display: none;
+}
+
+/* footer */
+
+#footer{
+    color:rgba(141, 141, 141, 0.758);
+    text-align: center;
+    position: absolute;
+    bottom: 5px;
+    margin: auto;
+    /* idk how to center, help */
+}

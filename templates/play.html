@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="static/css/play.css">
+
+        <title>Higher or Lower: Reddit</title>
+    </head>
+
+    <body>
+        <div id="top_counters"> <!--maybe grid layout for this?-->
+            <div id="highscore_counter">
+                <p id="highscore"> Highscore: {{session.highscore}} </p>
+
+                <p id="score">0</p>
+            </div>       
+        </div>
+
+        <div id="gameplay_cards"> <!--probably flex box?-->
+
+            <div id="left_card" class="subreddits">
+                <img class="subreddit_img" src="static/pictures/placeholder.png" alt="placeholder">
+                <h1 class="subreddit_name">placeholder1</h1>
+                <h2 class="subcount">subcount</h2>
+            </div>
+
+            <div id="right_card" class="subreddits">
+                <img class="subreddit_img" src="static/pictures/placeholder.png" alt="placeholder">
+                <h1 class="subreddit_name">placeholder2</h1>
+
+                <button>upvote</button> <button>downvote</button>
+            </div>
+        </div>
+
+        <div id="debugging">
+            <button type="button" onclick="correct()">increment score</button>
+            <button type="button" onclick= "window.location.href='{{ url_for( 'index') }}';">return</button>
+        </div>
+    </body>
+
+    <script src="static/scripts/play.js"></script>
+
+</html>
