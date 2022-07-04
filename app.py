@@ -1,8 +1,10 @@
-from flask import Flask, render_template, session
+from mimetypes import init
+from flask import Flask, render_template, session, request
 from functions import *
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SESSION_KEY')
+headers = initialise_bot()
 
 @app.route("/")
 def index():
@@ -12,10 +14,16 @@ def index():
 
     return render_template("index.html")
 
-@app.route("/play")
+@app.route("/play", methods=['GET', 'POST'])
 def play():
     #id like to redirect to homepage if the user tries to play cold
-    return render_template("play.html")
+    if request.method == 'GET':
+        session['score'] = 0
+        return render_template("play.html")
+    else: #this is when the user clicks up or downvote
+        session['score'] += 1
+        return render_template("play.html")
+
 
 
 

@@ -168,7 +168,6 @@ def mergeSort(arr): #takes in a list of sub_summary objects
             arr[k] = R[j]
             j += 1
             k += 1
-
 ########################### merge sorts a list of sub_summarys ###########################
 
 ########################### reads sub_summarys from filename and puts them in sub data ###########################
@@ -272,7 +271,7 @@ def game_start(sub_data):
 ########################### combined function for updating data ###########################
 # this function will write the new data into the given file and will sort if sort=True
 # returns a list of all subreddits in sub_summary format
-def update_data(filename: str, sort):
+def update_data(filename: str, sort=False):
     headers = initialise_bot()
     list = get_subreddits(headers, filename) #get the data from API
 

@@ -12,7 +12,7 @@
             <div id="highscore_counter">
                 <p id="highscore"> Highscore: {{session.highscore}} </p>
 
-                <p id="score">0</p>
+                <p id="score">{{session.score}}</p>
             </div>       
         </div>
 
@@ -33,9 +33,19 @@
         </div>
 
         <div id="debugging">
-            <button type="button" onclick="correct()">increment score</button>
-            <button type="button" onclick= "window.location.href='{{ url_for( 'index') }}';">return</button>
+
+            <p>---------------for form submitting---------------</p>
+            <form action="/play" method="post">
+                <div>
+                    <label type="text">upvote</label>
+                    <input type="submit" name="action" value="upvote">
+                </div>
+                <div>
+                    <label type="text">downvote</label>
+                    <input type="submit" name="action" value="downvote">
+                </div>
         </div>
+
     </body>
 
     <script src="static/scripts/play.js"></script>
