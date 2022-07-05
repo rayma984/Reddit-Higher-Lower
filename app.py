@@ -1,16 +1,27 @@
 from mimetypes import init
-from flask import Flask, render_template, session, request
+from flask import Flask, render_template, session, request, flash
 from functions import *
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SESSION_KEY')
-headers = initialise_bot()
 
-@app.route("/")
+headers = initialise_bot()
+dataList = []
+
+@app.route("/", methods=['GET', 'POST'])
 def index():
     #first time entering the page, highscore = 0
     if 'highscore' not in session:
         session['highscore'] = 0
+        return render_template("index.html")
+    
+    #if this is a request for getting new data
+    if(request.method == 'POST'):
+        dataFile = "data.txt"
+
+        dataList = get_subreddits(headers, dataFile)
+        #send a flash message over to the HTML so users know it be loading
+        flash('Loading...', category='info')
 
     return render_template("index.html")
 
