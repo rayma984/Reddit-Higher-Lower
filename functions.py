@@ -122,9 +122,11 @@ def get_subreddits(headers, filename):
                 get_info(raw_data)
 
     get_info(raw_data)
+    file.close()
+    
     return all_subreddits
 
-    file.close()
+    
 ########################### code to be put in the main func ###########################
 # goes through as many subs as it can (4088) and returns their name and sub count (u can do more with this if u add fields to get)
 # needs valid headers to work
