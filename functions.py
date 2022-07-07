@@ -82,7 +82,9 @@ class SubData:
     
 
 # writes to a file all the subreddits that the api could get me
-def get_subreddits(headers, filename):
+def get_subreddits(filename):
+    headers = initialise_bot()
+
     base_url = 'https://oauth.reddit.com/reddits.json'
 
     all_subreddits = []
@@ -111,7 +113,7 @@ def get_subreddits(headers, filename):
             #we utilize the fact that count is a thing to keep paging thru the reddit api
 
             file.write("{}: {}: {}\n".format(name, subscribers, img_link))
-            print("{}: {}: {}".format(name, subscribers, img_link))
+            # print("{}: {}: {}".format(name, subscribers, img_link)) # AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
             if(count % 25 == 0): #if we reach the page limit, go next
                 last_subreddit = subreddit["data"]['name']
                 url_addon = "?count={}&after={}".format(count,last_subreddit)
@@ -124,6 +126,8 @@ def get_subreddits(headers, filename):
     get_info(raw_data)
     file.close()
     
+    print('-------done-------')
+
     return all_subreddits
 
     

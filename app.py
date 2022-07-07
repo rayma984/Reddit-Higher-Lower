@@ -1,4 +1,3 @@
-from mimetypes import init
 from flask import Flask, render_template, session, request, flash
 from functions import *
 
@@ -11,19 +10,22 @@ dataList = []
 @app.route("/", methods=['GET', 'POST'])
 def index():
     #first time entering the page, highscore = 0
-    if 'highscore' not in session:
+    if ('highscore' not in session or session['highscore'] == 0) and request.method == 'GET':
         session['highscore'] = 0
         return render_template("index.html")
     
     #if this is a request for getting new data
     if(request.method == 'POST'):
         dataFile = "data.txt"
+        print('GETTING NEW DATA')
+        dataList = get_subreddits(dataFile)
 
-        dataList = get_subreddits(headers, dataFile)
+        #this will be gone later DW
+
         #send a flash message over to the HTML so users know it be loading
         flash('Loading...', category='info')
+        return render_template("index.html")
 
-    return render_template("index.html")
 
 @app.route("/play", methods=['GET', 'POST'])
 def play():
